@@ -1,12 +1,16 @@
 version: "3"
 services:
   file-code-box:
-    image: lanol/filecodebox:latest
+    build: .
+    image: filecodebox:latest
     volumes:
-      - fcb-data:/app/data:rw
+      - ./data:/app/data:rw
     restart: unless-stopped
     ports:
       - "12345:12345"
-volumes:
-  fcb-data:
-    external: false
+
+# 命令备忘
+# 构建镜像
+#docker build -t filecodebox:latest /root/github/lkk-one/FileCodeBox
+# 启动
+#docker-compose -f /root/github/lkk-one/FileCodeBox/docker-compose.yml up -d
